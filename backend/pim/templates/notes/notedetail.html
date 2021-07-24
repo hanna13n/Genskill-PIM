@@ -1,0 +1,24 @@
+{%extends "index.html"%} {%block body%} {%if title%} {%if prev%}
+<a href="{{url_for('notes.notedetail',nid=prev)}}">Previous</a>
+{%endif%}
+
+<a href="{{url_for('notes.allnotes')}}">ALL</a>
+
+{%if nxt%}
+<a href="{{url_for('notes.notedetail',nid=nxt)}}">Next</a>
+{%endif%}
+<h3>{{title}}</h3>
+<small>{{created_on}}</small>
+{%for t in tags%} {#<!-- "{{url_for('notes.search',field='tag', value=t)}}" -->#}
+<a href="">{{t}}</a>
+{%endfor%}
+<hr />
+<p>{{detail}}</p>
+<p>
+  {#{{url_for('notes.editnote',nid=nid)}}#}
+  <a href="">Edit</a>
+</p>
+{%else%}
+<h2>Sorry. Thats not a valid note id.</h2>
+<p>How abot going <a href="{{url_for('notes.allnotes')}}">back</a>?</p>
+{%endif%} {%endblock%}

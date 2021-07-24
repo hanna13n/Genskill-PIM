@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyNote</title>
+  </head>
+  <body>
+    <nav>
+      <h1>EasyNote</h1>
+      <a href="{{url_for('notes.addnote')}}">Add Note</a>
+      <a href="{{url_for('notes.allnotes')}}">View All</a>
+    </nav>
+    <p>The Simplest Way to Keep Notes.</p>
+    {%block main%} {% block forms %}
+    <form action="" method="post">
+      <input type="search" name="searchstring" placeholder="keyword" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <form action="" method="post">
+      <select name="" id="">
+        <option value="">--select a tag--</option>
+        <option value="">Important</option>
+        <option value="">Starred</option>
+      </select>
+      <button type="submit">View</button>
+    </form>
+    {% block newtag%}
+    <a href="{{url_for('notes.newtag')}}">+ Add New Tag</a>
+    {%endblock%} {% endblock %} {%block body%} {%endblock%} {%endblock%}
+  </body>
+</html>
