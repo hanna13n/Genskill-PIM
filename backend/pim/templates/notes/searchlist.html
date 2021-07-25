@@ -1,5 +1,6 @@
 {% extends "index.html" %} 
 {% block body %}
+{%if notes%}
 <table>
   <thead>
     <tr>
@@ -20,4 +21,8 @@
     {%endfor%}
   </tbody>
 </table>
+{%else%}
+<h3>Could not find jobs matching your search.</h3>
+<p>Go to <a href="{{url_for('notes.allnotes')}}">All Notes</a>?</p>
+{%endif%}
 {%endblock%}

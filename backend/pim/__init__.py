@@ -15,7 +15,14 @@ def create_app():
     
     @app.route("/")
     def index():
-        return render_template('index.html')
+        conn=db.get_db()
+        cursor=conn.cursor()
+        cursor.execute(
+            "select tagname from hashtags"
+        )
+        tags=(x[0] for x in cursor.fetchall())
+        tags=list(tags)
+        return render_template('index.html', tags=tags)
     
     from . import notes
     app.register_blueprint(notes.bp)

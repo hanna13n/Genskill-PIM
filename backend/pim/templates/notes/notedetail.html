@@ -2,7 +2,7 @@
 <a href="{{url_for('notes.notedetail',nid=prev)}}">Previous</a>
 {%endif%}
 
-<a href="{{url_for('notes.allnotes')}}">ALL</a>
+{#<a href="{{url_for('notes.allnotes')}}">ALL</a>#}
 
 {%if nxt%}
 <a href="{{url_for('notes.notedetail',nid=nxt)}}">Next</a>
@@ -15,9 +15,8 @@
 <hr />
 <p>{{detail}}</p>
 <p>
-  <a href="{{url_for('notes.editnote',nid=nid)}}">Edit</a>
-</p>
-<p>
+<a href="{{url_for('notes.editnote',nid=nid)}}">Edit</a>
+
 <a href="{{url_for('notes.deletenote',nid=nid)}}">Delete</a>
 </p>
 {%else%}

@@ -8,26 +8,32 @@
   </head>
   <body>
     <nav>
-      <h1>EasyNote</h1>
+      <h1><a href="{{url_for('index')}}">EasyNote</a></h1>
       <a href="{{url_for('notes.addnote')}}">Add Note</a>
       <a href="{{url_for('notes.allnotes')}}">View All</a>
     </nav>
     <p>The Simplest Way to Keep Notes.</p>
-    {%block main%} {% block forms %}
-    <form action="" method="post">
+    {%block main%} 
+    {% block forms %}
+    <form action="{{url_for('notes.search')}}" method="post">
       <input type="search" name="searchstring" placeholder="keyword" />
-      <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-    <form action="" method="post">
-      <select name="" id="">
-        <option value="">--select a tag--</option>
-        <option value="">Important</option>
-        <option value="">Starred</option>
+      <select name="tag" id="tag">
+        <option value="null">--select a tag--</option>
+        {% for t in tags %}
+        <option value="{{t}}">{{t}}</option>
+        {%endfor%}
       </select>
-      <button type="submit">View</button>
+      <button type="submit">Search</button>
     </form>
+    <br>
     {% block newtag%}
     <a href="{{url_for('notes.newtag')}}">+ Add New Tag</a>
-    {%endblock%} {% endblock %} {%block body%} {%endblock%} {%endblock%}
+    {%endblock%} 
+    <br>
+    <br>
+    {% endblock %} 
+    {%block body%} 
+    {%endblock%} 
+    {%endblock%}
   </body>
 </html>

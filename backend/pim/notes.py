@@ -1,4 +1,5 @@
 import datetime
+import re
 from flask import Blueprint
 from flask import render_template, request, redirect, url_for, g, jsonify
 from . import db
@@ -174,3 +175,40 @@ def newtag():
         cursor.execute("insert into hashtags (tagname) values (%s)",(newtag,))
         conn.commit()
         return redirect(url_for('index'),302)
+
+@bp.route("/search",methods=["POST",])
+def search():
+    conn = db.get_db()
+    cursor = conn.cursor()
+    searchstring=request.form.get("searchstring")
+    tag=request.form.get("tag")
+    print("\n\n")
+    print(searchstring,",",tag)
+    if(searchstring):
+        print(searchstring)
+    if(tag):
+        print(tag)
+
+    print("\n")
+    if searchstring and tag!="null":
+        searchstring='%'+searchstring+'%'
+        print(searchstring,tag)
+        cursor.execute(
+            "select n.id, n.title, n.created_on from notes n, hashtags t, tags_notes tn where n.id=tn.note and t.tagname=%s and t.id=tn.tag and (title ilike  %s or detail ilike %s)",(tag,searchstring,searchstring,)
+        )
+    elif searchstring:
+        searchstring='%'+searchstring+'%'
+        print(searchstring)
+        cursor.execute(
+            "select id, title, created_on from notes where title ilike %s or detail ilike %s",(searchstring,searchstring,)
+        )
+    elif tag!="null":
+        print(tag)
+        cursor.execute(
+            "select n.id, n.title, n.created_on from notes n, hashtags t, tags_notes tn where t.tagname=%s and n.id=tn.note and tn.tag=t.id",(tag,)
+        )
+    notes=cursor.fetchall()
+    if(request.accept_mimetypes.best == "application/json"):
+        return jsonify(dict(notes=[dict(id=id, title=title) for id, _, title, _, _ in notes]))
+    else:
+        return render_template("notes/searchlist.html", notes=notes)
