@@ -4,13 +4,13 @@ drop table if exists tags_notes cascade;
 
 create table hashtags(
     id serial primary key,
-    tagname text
+    tagname text UNIQUE NOT NULL
 );
 insert into hashtags(tagname) values('important'),('starred');
 
 create table notes(
     id serial primary key,
-    title text,
+    title text NOT NULL,
     created_on timestamp,
     detail text
 );

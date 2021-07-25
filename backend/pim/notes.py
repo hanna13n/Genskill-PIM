@@ -42,14 +42,19 @@ def allnotes():
     conn = db.get_db()
     cursor = conn.cursor()
     cursor.execute(
+            "select tagname from hashtags"
+        )
+    tags=(x[0] for x in cursor.fetchall())
+    tags=list(tags)
+    cursor.execute(
         "select id, title, created_on from notes order by created_on desc"
     )
     notes = cursor.fetchall()
 
     if(request.accept_mimetypes.best == "application/json"):
-        return jsonify(dict(notes=[dict(id=id, title=title) for id, _, title, _, _ in notes]))
+        return jsonify(dict(notes=[dict(id=id, title=title, created_on=created_on) for id, title, created_on in notes]))
     else:
-        return render_template("notes/noteslist.html", notes=notes)
+        return render_template("notes/noteslist.html", notes=notes, tags=tags)
 
 
 @bp.route("/<nid>")
@@ -168,8 +173,13 @@ def deletenote(nid):
 def newtag():
     conn = db.get_db()
     cursor = conn.cursor()
+    cursor.execute(
+            "select tagname from hashtags"
+        )
+    tags=(x[0] for x in cursor.fetchall())
+    tags=list(tags)
     if request.method=="GET":
-        return render_template("notes/newtag.html")
+        return render_template("notes/newtag.html", tags=tags)
     elif request.method=="POST":
         newtag=request.form.get("newtag")
         cursor.execute("insert into hashtags (tagname) values (%s)",(newtag,))
@@ -180,6 +190,11 @@ def newtag():
 def search():
     conn = db.get_db()
     cursor = conn.cursor()
+    cursor.execute(
+            "select tagname from hashtags"
+        )
+    tags=(x[0] for x in cursor.fetchall())
+    tags=list(tags)
     searchstring=request.form.get("searchstring")
     tag=request.form.get("tag")
     print("\n\n")
@@ -209,6 +224,6 @@ def search():
         )
     notes=cursor.fetchall()
     if(request.accept_mimetypes.best == "application/json"):
-        return jsonify(dict(notes=[dict(id=id, title=title) for id, _, title, _, _ in notes]))
+        return jsonify(dict(notes=[dict(id=id, title=title, created_on=created_on) for id, title, created_on in notes]))
     else:
-        return render_template("notes/searchlist.html", notes=notes)
+        return render_template("notes/searchlist.html", notes=notes,tags=tags)
