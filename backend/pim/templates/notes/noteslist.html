@@ -10,8 +10,10 @@
   <tbody>
     {% for id, title, date in notes%}
     <tr>
-      <td>{{id}}</td>
+      <td><a href="{{url_for('notes.notedetail',nid=id)}}">{{id}}</a></td>
+
       <td><a href="{{url_for('notes.notedetail',nid=id)}}">{{title}}</a></td>
+      
       <td>{{date.strftime("%c")}}</td>
     </tr>
     {%endfor%}
