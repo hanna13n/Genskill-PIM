@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_cors import CORS
-
+from flask import jsonify
 
 def create_app():
     app = Flask("pim")
@@ -17,12 +17,15 @@ def create_app():
     def index():
         conn=db.get_db()
         cursor=conn.cursor()
+
         cursor.execute(
             "select tagname from hashtags"
         )
-        tags=(x[0] for x in cursor.fetchall())
+
+        tags=cursor.fetchall()
         tags=list(tags)
-        return render_template('index.html', tags=tags)
+        return jsonify(dict(tags=tags))
+        
     
     from . import notes
     app.register_blueprint(notes.bp)
