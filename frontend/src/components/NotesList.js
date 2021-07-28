@@ -5,6 +5,8 @@ function NotesList(props){
         e.preventDefault()
         props.noteDetail(note.id)
     }
+
+
     return(
         
         <ol>
@@ -30,7 +32,7 @@ function NotesList(props){
                         )
                     })
                     
-                    }
+            }
                    
         </ol>
         

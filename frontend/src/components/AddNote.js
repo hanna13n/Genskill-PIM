@@ -38,6 +38,7 @@ function AddNote(props){
                     name="title"
                     onChange={(e) => setTitle(e.target.value)}
                 />
+
                 <br/>
 
                 <textarea name="detail"
@@ -52,7 +53,7 @@ function AddNote(props){
                     {
                         
                         return(
-                            <span key={tag} className="checkbox">
+                            <span key={tag} className="form-check form-check-inline">
                             <input type="checkbox" className="form-check-input"
                             name={tag}
                             onChange={(e) =>
@@ -63,11 +64,13 @@ function AddNote(props){
                     })
                 }
                 </div>
+
                 <div className="Addbtn">
                 <button className="btn btn-success btn-sm"
                 type="submit"
                 >Add</button>
                 </div>
+                
             </form>
         </div>
     )

@@ -27,16 +27,19 @@ function AddTag(props)
         <div>
 
             <form onSubmit={addTag}>
+
                 <label className="form-label" htmlFor="newtag"> New Tag : </label>
                 <input className="form-control-sm" type="text" placeholder="Enter Tag Name Here"
                 name="newtag"
                 onChange={(e) => setTag(e.target.value)}
                 />
+
                 <div className="Addbtn">
                 <button className="btn btn-success btn-sm"
                 type="submit"
                 >Add</button>
                 </div>
+                
             </form>
 
         </div>

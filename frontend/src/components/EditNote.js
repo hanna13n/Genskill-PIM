@@ -59,14 +59,14 @@ function EditNote(props){
                     props.tags.tags.map(tag =>
                     {
                         return(
-                            <span key={tag} className="checkbox">
+                            <span key={tag} >
                             {tags[tag[0]] ? 
-                            <span>
+                            <span className="form-check form-check-inline">
                             <input className="form-check-input" type="checkbox" name={tag} id={tag} defaultChecked onChange={(e) => tags[e.target.name]=e.target.checked} />
                             <label className="form-check-label" htmlFor={tag}>{tag}</label> 
                             </span>
                             :
-                            <span>
+                            <span className="form-check form-check-inline">
                             <input className="form-check-input" type="checkbox" name={tag} id={tag} onChange={(e) =>
                             tags[e.target.name]=e.target.checked} />
                             <label className="form-check-label" htmlFor={tag}>{tag}</label>
@@ -77,12 +77,14 @@ function EditNote(props){
                         )
                     })
                 }
+
                 </div>
                 <div className="Addbtn">
                 <button className="btn btn-success"
                 type="submit"
                 >Save</button>
                 </div>
+                
             </form>
             }
         </div>
