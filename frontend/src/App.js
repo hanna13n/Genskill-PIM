@@ -31,7 +31,7 @@ function App() {
   },[loadNote])
 
   useEffect(()=>{
-    fetch(process.env.REACT_APP_API_SERVER+"/",
+    fetch(process.env.REACT_APP_API_SERVER+"/tags",
       { 
         method: 'GET',
         headers: { 'Accept': 'application/json',
