@@ -1,4 +1,4 @@
-# Genskill-PIM
+# Genskill-PIM  
 
-Genskill Project - Personal Info Manager
+Genskill Project - Personal Info Manager  
 https://eazynote.herokuapp.com/
