@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 from flask import jsonify
 
 def create_app():
-    app = Flask(__name__,static_folder="./frontend/build",static_url_path="/")
+    app = Flask("notes",static_folder="./frontend/build")
     CORS(app)
     app.config.from_mapping(
         DATABASE_URL="postgres://kstmushzcdgcpt:6bb2555f8a584aeb831597b814143bc49a07773f6b4f1a40913966f7148686ff@ec2-34-195-143-54.compute-1.amazonaws.com:5432/dg82d6od9h4fk"
