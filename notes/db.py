@@ -6,8 +6,8 @@ from flask.cli import with_appcontext
 
 def get_db():
     if 'db' not in g:
-        dbname = current_app.config['DATABASE_URL']
-        g.db = psycopg2.connect(f"dbname={dbname}")
+        dburl = current_app.config['DATABASE_URL']
+        g.db = psycopg2.connect(dburl,sslmode="require")
     return g.db
 
 
