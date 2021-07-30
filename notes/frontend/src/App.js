@@ -105,7 +105,7 @@ function App() {
 
       <nav className="navbar sticky-top nav-bar-dark navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand link" href="/"><h1>EasyNote</h1></a>
+          <a className="navbar-brand link" href="/"><h1>EazyNote</h1></a>
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"><h1><i class="bi bi-justify"></i></h1></span>
