@@ -16,7 +16,7 @@ function AddNote(props){
         tags["detail"]=detail
     
         fetch(
-            process.env.REACT_APP_API_SERVER+"/notes/addnew", 
+            "https://eazynote.herokuapp.com/notes/addnew", 
             {
                 method: 'POST',
                 headers: { 'Accept' : 'application/json',

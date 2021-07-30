@@ -19,7 +19,7 @@ function App() {
   const[loadTag, setLoadTags]=useState(false)
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_SERVER+"/notes/",
+    fetch("https://eazynote.herokuapp.com/notes/",
     {
       method: 'GET',
       headers: { 'Accept' : 'application/json',
@@ -31,7 +31,7 @@ function App() {
   },[loadNote])
 
   useEffect(()=>{
-    fetch(process.env.REACT_APP_API_SERVER+"/tags",
+    fetch("https://eazynote.herokuapp.com/tags",
       { 
         method: 'GET',
         headers: { 'Accept': 'application/json',
@@ -81,7 +81,7 @@ function App() {
     body["tag"]=searchTag
 
     fetch(
-      process.env.REACT_APP_API_SERVER+"/notes/search", 
+      "https://eazynote.herokuapp.com/notes/search", 
       {
           method: 'POST',
           headers: { 'Accept' : 'application/json',

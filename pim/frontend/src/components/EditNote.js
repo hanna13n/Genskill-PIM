@@ -24,7 +24,7 @@ function EditNote(props){
          tags["detail"]=detail
          
          fetch(
-            process.env.REACT_APP_API_SERVER+"/notes/"+id+"/edit", 
+            "https://eazynote.herokuapp.com/notes/"+id+"/edit", 
             {
                 method: 'POST',
                 headers: { 'Accept' : 'application/json',

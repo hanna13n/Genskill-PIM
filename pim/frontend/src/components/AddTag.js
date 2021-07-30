@@ -10,7 +10,7 @@ function AddTag(props)
         body["newtag"]=tag
         console.log(tag)
         fetch(
-            process.env.REACT_APP_API_SERVER+"/notes/newtag",
+            "https://eazynote.herokuapp.com/notes/newtag",
             {
                 method: 'POST',
                 headers: { 'Accept' : 'application/json',

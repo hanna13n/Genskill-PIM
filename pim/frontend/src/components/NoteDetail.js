@@ -6,7 +6,7 @@ function NoteDetail(props){
     const[note, setNote] = useState()
 
     useEffect( () => {
-        fetch(process.env.REACT_APP_API_SERVER+"/notes/"+props.id,
+        fetch("https://eazynote.herokuapp.com/notes/"+props.id,
           {
             method: 'GET',
             headers: { 'Accept' : 'application/json',
@@ -24,7 +24,7 @@ function NoteDetail(props){
     const deleteNote = () => {
         
         fetch(
-            process.env.REACT_APP_API_SERVER+"/notes/deletenote/"+props.id, 
+            "https://eazynote.herokuapp.com/notes/deletenote/"+props.id, 
             {
                 method: 'DELETE',
                 headers: { 'Accept' : 'application/json',
