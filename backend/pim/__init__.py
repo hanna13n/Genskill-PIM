@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 from flask import jsonify
 
 def create_app():
-    app = Flask("pim",static_folder="frontend/build",static_url_path="")
+    app = Flask("pim",static_folder="../../frontend/build",static_url_path="/")
     CORS(app)
     app.config.from_mapping(
         DATABASE="pim"
