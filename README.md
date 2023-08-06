@@ -1,8 +1,7 @@
-# Genskill-PIM  
+# PIM  
 
-Genskill Project - Personal Info Manager  
+Personal Info Manager  
 A web app with React frontend and Flask backend which allows the user to organize and record informations.      
-Live Demo : https://eazynote.herokuapp.com/
   
 ## Instructions
 1. Clone this repo. 
